@@ -21,16 +21,18 @@ use App\Http\Controllers\Admin\DashboardController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('admin/login',[LoginController::class, 'getLogin'])->name('login');
-Route::post('admin/login/store', [LoginController::class, 'postLogin']);
-Route::get('admin/logout', [LoginController::class, 'getLogout']);
+Route::get('dashboard/login',[LoginController::class, 'getLogin'])->name('login');
+Route::post('dashboard/login/store', [LoginController::class, 'postLogin']);
+Route::get('dashboard/logout', [LoginController::class, 'getLogout'])->name('logout');
 
-Route::middleware(['auth'])->group(function () {
-    Route::prefix('admin')->group(function () {
 
-        Route::get('/', [DashboardController::class, 'index']);
+Route::middleware('auth')->group(function () {
+
+    Route::prefix('dashboard')->group(function() {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     });
 });
+
 
 
 /*
