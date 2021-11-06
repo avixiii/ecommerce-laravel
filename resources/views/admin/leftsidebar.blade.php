@@ -1,3 +1,7 @@
+<?php
+    $menu = config('menudashboard');
+?>
+
 <div id="leftsidebar" class="sidebar">
     <div class="menu">
         <ul class="list">
@@ -17,12 +21,23 @@
                 </div>
             </li>
             <li class="header">MAIN</li>
-            <li class="active open"> <a href="" class="toggled waves-effect waves-block"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
-            <li><a href="javascript:void(0);" class="menu-toggle waves-effect waves-block"><i class="zmdi zmdi-apps"></i><span>App</span> <span class="badge badge-success float-right">7</span></a>
-                <ul class="ml-menu">
-                    <li><a href="" class=" waves-effect waves-block">Inbox</a></li>
-                </ul>
+            @foreach($menu as $item)
+            <li class="{{ (request()->is($item['route']) ? 'active open' : '')  }}">
+                <a href="{{ route($item['route']) }}" class="toggled waves-effect waves-block">
+                    <i class="{{ $item['icon'] }}"></i>
+                    <span>{{ $item['label'] }}</span>
+                </a>
+                @if(isset($item['items']))
+                @foreach($item['items'] as $subitem)
+                    <ul class="ml-menu" style="display: none;">
+                        <li>
+                            <a href="{{ route($subitem['route']) }}" class=" waves-effect waves-block">{{ $subitem['label'] }}</a>
+                        </li>
+                    </ul>
+                @endforeach
+                @endif
             </li>
+            @endforeach
         </ul>
     </div>
 </div>
