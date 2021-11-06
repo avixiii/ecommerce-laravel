@@ -43,7 +43,7 @@
                                 @csrf
                             </form>
                             <div class="footer">
-                                <a onclick="document.getElementById('form__login').submit()" class="btn btn-primary btn-round btn-block">Đăng nhập</a>
+                                <a style="color: white" onclick="document.getElementById('form__login').submit()" class="btn btn-primary btn-round btn-block">Đăng nhập</a>
                             </div>
                             <a href="#" class="link">Quên mật khẩu?</a>
 
