@@ -10,4 +10,7 @@
 <script src="/admin/bundles/mainscripts.bundle.js"></script>
 <script src="/admin/js/pages/index.js"></script>
 
+
+<script src="/admin/js/main.js"></script> <!-- LOGIC -->
+
 @yield('script')

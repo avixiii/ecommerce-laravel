@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('admin.head')
+    @yield('style')
 </head>
 <body class="theme-black">
 @include('admin.minileftbar')

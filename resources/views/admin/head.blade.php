@@ -10,5 +10,5 @@
 <!-- Custom Css -->
 <link rel="stylesheet" href="/admin/css/main.css">
 <link rel="stylesheet" href="/admin/css/color_skins.css">
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @yield('head')
