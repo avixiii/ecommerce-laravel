@@ -21,6 +21,7 @@
                             <th>#</th>
                             <th>Tên danh mục sản phẩm</th>
                             <th>Mô tả</th>
+                            <th>Số lượng</th>
                             <th>Trạng thái</th>
                             <th>Edit</th>
                         </tr>
@@ -32,6 +33,7 @@
                                     scope="row">{{$category->id}}</th>
                                 <td onclick="window.location='/dashboard/categories/edit/{{$category->id}}';">{{$category->name}}</td>
                                 <td onclick="window.location='/dashboard/categories/edit/{{$category->id}}';">{{$category->description}}</td>
+                                <td>{{ $category->products ? $category->products->count() : 0 }}</td>
                                 <td style="{{ $category->status ? 'color: blue' : 'color: red' }}" >{{ $category->status ? 'public' : 'private' }}</td>
                                 <td>
                                     <a href="/dashboard/categories/edit/{{$category->id}}"
