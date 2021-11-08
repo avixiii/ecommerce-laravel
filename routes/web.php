@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoriesController;
-
+use App\Http\Controllers\UploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
+        # Categories
         Route::prefix('categories')->group(function () {
             Route::get('/', [CategoriesController::class, 'index'])->name('dashboard.categories');
             Route::get('edit/{category}', [CategoriesController::class, 'show']);
@@ -40,6 +41,10 @@ Route::middleware('auth')->group(function () {
             Route::post('store', [CategoriesController::class, 'store']);
             Route::delete('destroy', [CategoriesController::class, 'destroy'])->name('dashboard.destroy');
         });
+
+
+        # Upload
+        Route::post('upload/services', [UploadController::class, 'store']);
     });
 });
 
