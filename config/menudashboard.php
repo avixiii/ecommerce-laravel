@@ -10,4 +10,9 @@ return [
         'route' => 'dashboard.categories',
         'icon'  => 'zmdi zmdi-apps'
     ],
+    [
+        'label' => 'Danh sách sản phẩm',
+        'route' => 'dashboard.products',
+        'icon' => 'zmdi zmdi-layers'
+    ]
 ];

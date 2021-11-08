@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\UploadController;
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,15 @@ Route::middleware('auth')->group(function () {
             Route::delete('destroy', [CategoriesController::class, 'destroy'])->name('dashboard.destroy');
         });
 
+        # Products
+        Route::prefix('products')->group(function () {
+            Route::get('/', [ProductsController::class, 'index'])->name('dashboard.products');
+            Route::get('add', [ProductsController::class, 'create']);
+            Route::post('store', [ProductsController::class, 'store']);
+            Route::get('edit/{product}', [ProductsController::class, 'show']);
+            Route::post('edit/{product}', [ProductsController::class, 'update']);
+            Route::delete('destroy', [ProductsController::class, 'destroy'])->name('product.destroy');
+        });
 
         # Upload
         Route::post('upload/services', [UploadController::class, 'store']);
