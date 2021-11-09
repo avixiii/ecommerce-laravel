@@ -1,0 +1,203 @@
+.new-arrival {
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  &__item {
+    height: 514px;
+    width: 48rem;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    &-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    &-info {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+    }
+
+    &-price {
+      font-size: 1.8rem;
+      color: $text-primary;
+      font-weight: 500;
+      float: right;
+      margin-top: 4.8rem;
+      margin-right: 4.8rem;
+    }
+
+    &-search {
+      font-size: 3rem;
+      position: absolute;
+      bottom: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      right: 50%;
+      transform: translateX(50%);
+      align-items: center;
+      transition: 0.3s;
+      .icon {
+        margin-left: 10px;
+      }
+      &:hover {
+        border-radius: 100%;
+        background-color: $text-primary;
+        .icon {
+          color: #fff;
+        }
+      }
+    }
+    &:hover > .back {
+      transform: rotateY(0deg);
+    }
+    &:hover > .font {
+      transform: rotateY(-180deg);
+    }
+  }
+
+  .back {
+    background-color: $primary-color;
+    margin-right: 0;
+    text-align: center;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+  .front {
+    transform: rotateY(0deg);
+  }
+  .front,
+  .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s linear;
+  }
+}
+
+.newsletter {
+  background-color: #131920;
+  height: 44.5rem;
+  .content {
+    padding-top: 15rem;
+    margin-top: 0rem;
+  }
+  .desc {
+    margin-top: 2rem;
+  }
+
+  .block {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  &__form {
+    text-align: center;
+    display: flex;
+    &-input {
+      width: 47rem;
+      height: 4rem;
+      border: none;
+      outline: none;
+      padding-left: 20px;
+      font-size: 1.4rem;
+      &::placeholder {
+        font-size: 1.2rem;
+        color: $text-secondary;
+      }
+    }
+
+    &-btn {
+      margin-left: 20px;
+      display: inline-flex;
+      align-items: center;
+      padding-left: 60px;
+      padding-right: 60px;
+      width: 20rem;
+      height: 4rem;
+      font-size: 1.4rem;
+      color: white;
+      font-weight: 500;
+      border-top: 1px solid white;
+      border-bottom: 1px solid white;
+    }
+  }
+}
+
+.popular {
+  margin-bottom: 13rem;
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    cursor: pointer;
+    height: 38rem;
+    width: 27rem;
+    position: relative;
+    &-info {
+      position: absolute;
+      bottom: 2rem;
+      left: 3rem;
+      right: 3rem;
+      text-align: center;
+    }
+  }
+}
+
+.news {
+  background-color: #f7f7f7;
+  padding-bottom: 14rem;
+  .content {
+    padding-top: 14rem;
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    width: 50rem;
+    height: 48rem;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem;
+    &-date {
+      font-size: 1.4rem;
+      color: $text-primary;
+      .day {
+        display: block;
+        font-weight: 500;
+        font-size: 8rem;
+      }
+    }
+
+    &-title {
+      font-size: 2.1rem;
+      color: $text-primary;
+      font-weight: 500;
+    }
+    &-desc {
+      font-size: 1.4rem;
+      color: $text-secondary;
+    }
+    &-auth {
+      font-size: 1.4rem;
+      color: $text-primary;
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.about {
+  background-color: white;
+}

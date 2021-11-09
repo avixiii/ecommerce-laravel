@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\Client\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,6 +67,4 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return 'HOME PAGE';
-});
+Route::get('/', [HomeController::class, 'home']);

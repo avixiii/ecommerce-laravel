@@ -1,0 +1,19 @@
+.footer {
+  height: 57rem;
+  background-color: #171e27;
+  &__container {
+    padding-top: 14rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    width: 25%;
+  }
+  &__link {
+    color: $text-secondary;
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 3rem;
+    width: fit-content;
+  }
+}

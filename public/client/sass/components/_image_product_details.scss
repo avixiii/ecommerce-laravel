@@ -1,0 +1,15 @@
+.small {
+  &-img {
+    &-group {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    &-col {
+      flex-basis: 24%;
+      cursor: pointer;
+      margin-top: -60px;
+      box-shadow: -15px 16px 11px -2px rgb(174 194 164 / 43%);
+    }
+  }
+}

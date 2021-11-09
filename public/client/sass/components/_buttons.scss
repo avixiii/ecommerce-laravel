@@ -1,0 +1,14 @@
+.btn {
+  display: block;
+  width: 21rem;
+  height: 5.4rem;
+  text-align: center;
+  line-height: 5.4rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ccc;
+
+  &--rectangle {
+    background-color: $text-primary;
+  }
+}

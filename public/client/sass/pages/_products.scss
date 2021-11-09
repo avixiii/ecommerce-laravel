@@ -1,0 +1,109 @@
+.product {
+  margin-bottom: 14rem;
+  &__filterbar {
+    height: 16rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-inner {
+      font-size: 1.4rem;
+      color: $text-secondary;
+    }
+    &-outside {
+      font-size: 1.6rem;
+      color: $text-primary;
+      padding-right: 20px;
+      display: flex;
+      font-weight: 600;
+      gap: 0 18px;
+
+      .filterbar__sort,
+      .filterbar__filter {
+        transition: 0.2s linear;
+        &:hover {
+          background-color: $primary-color;
+        }
+        cursor: pointer;
+      }
+    }
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__item {
+    width: 27rem;
+    height: 50rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    &-top {
+      height: 35rem;
+      position: relative;
+      transition: all 0.5s ease;
+    }
+    &-image {
+      height: 100%;
+      width: 100%;
+    }
+    .sale {
+      top: 0;
+      right: 0;
+    }
+    &-bottom {
+      text-align: center;
+      .name {
+        font-size: 2.1rem;
+        font-weight: 600;
+        color: $text-primary;
+        letter-spacing: 6px;
+      }
+
+      .price {
+        font-weight: 600;
+      }
+    }
+    &:hover > .product__back {
+      transform: rotateY(0deg);
+    }
+    &:hover > .product__front {
+      transform: rotateY(-180deg);
+    }
+    &-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-feat {
+      display: inline-flex;
+      gap: 0 12px;
+      align-items: center;
+      border-radius: 50px;
+      padding: 8px 30px;
+      padding-top: 12px;
+      background-color: #545b4c;
+      a {
+        color: #fff;
+        font-size: 2rem;
+        transition: all 0.5s ease;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  &__front {
+    backface-visibility: hidden;
+  }
+  &__back {
+    position: absolute;
+    height: 35rem;
+    top: 0;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    width: 100%;
+    background-color: $primary-color;
+  }
+}
