@@ -27,4 +27,10 @@ class ProductsController extends Controller
 
         return view('client.product.index', ['title' => $title, 'products' => $data]);
     }
+
+    public function show($slug = '')
+    {
+        $product = Products::where('slug', $slug)->where('status', 1)->first();
+        return view('client.product.details', ['product' => $product]);
+    }
 }

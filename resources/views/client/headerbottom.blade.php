@@ -7,11 +7,7 @@
             posuere, diam
         </p>
         <div class="breadcrumbs">
-            <a class="breadcrumbs__link" href="">Trang chủ</a>
-            <span class="breadcrumbs__next">
-              <ion-icon name="arrow-forward-circle-outline" role="img" class="md hydrated" aria-label="arrow forward circle outline"></ion-icon>
-            </span>
-            <a href="#" class="breadcrumbs__link">Sản phẩm</a>
+            <a class="breadcrumbs__link" href="{{ route('home') }}">Trang chủ</a>
         </div>
     </div>
 </div>

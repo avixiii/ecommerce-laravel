@@ -68,8 +68,9 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::prefix('products')->group(function () {
-    Route::get('/', [ProductsClient::class, 'index']);
+    Route::get('/', [ProductsClient::class, 'index'])->name('products');
+    Route::get('{slug}', [ProductsClient::class, 'show']);
 });
