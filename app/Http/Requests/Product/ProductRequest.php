@@ -26,6 +26,7 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|unique:products',
             'price' => 'required',
+            'description' => 'max:255',
             'quantity' => 'required',
             'status' => 'required',
         ];
@@ -39,6 +40,7 @@ class ProductRequest extends FormRequest
             'status.required' => 'Trạng thái sản phẩm không được để trống',
             'quantity' => 'Vui lòng nhập số lượng sản phẩm',
             'price' => 'Giá sản phẩm không được để trống',
+            'description' => 'Mô tả sản phẩm chỉ giới hạn 255 ký tự'
         ];
     }
 }
