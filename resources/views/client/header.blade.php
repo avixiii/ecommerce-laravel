@@ -29,4 +29,5 @@
             </ul>
         </nav>
     </div>
+    @yield('header__bottom')
 </header>

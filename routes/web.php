@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ProductsController as ProductsClient;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,7 @@ Route::middleware('auth')->group(function () {
 */
 
 Route::get('/', [HomeController::class, 'home']);
+
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductsClient::class, 'index']);
+});
