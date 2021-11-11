@@ -68,20 +68,22 @@
                         </div>
                         <div class="product__item-info product__back">
                             <div class="product__item-feat">
-                                <a href="/products/{{ $product->slug }}">
+                                <a  href="/products/{{ $product->slug }}">
                                     <ion-icon class="icon md hydrated" name="search-outline" role="img"
                                               aria-label="search outline"></ion-icon>
                                 </a>
                                 <a href="#">
                                     <ion-icon name="heart-outline"></ion-icon>
                                 </a>
-                                <a href="" class="">
+                                <input value="1" type="number" hidden id="quantity">
+                                <a data-value="1" data-url="{{ route('addToCart', ['id' => $product->id, 'quantity' => '']) }}" class="add_to_cart">
                                     <ion-icon name="cart-outline"></ion-icon>
                                 </a>
                             </div>
                         </div>
                         <div class="product__item-bottom">
-                            <div onclick="window.location='/products/{{ $product->slug }}';" class="name mt-8">{{ $product->name }}</div>
+                            <div onclick="window.location='/products/{{ $product->slug }}';"
+                                 class="name mt-8">{{ $product->name }}</div>
                             <div
                                 class="desc mt-8">{{ \Illuminate\Support\Str::limit($product->description, 50, '...') }}</div>
                             @if($product->price_sale != 0)

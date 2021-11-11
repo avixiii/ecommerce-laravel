@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductsController as ProductsClient;
+use App\Http\Controllers\Client\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,4 +74,5 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductsClient::class, 'index'])->name('products');
     Route::get('{slug}', [ProductsClient::class, 'show']);
+    Route::get('add-to-cart/{id}', [CartController::class, 'add'])->name('addToCart');
 });

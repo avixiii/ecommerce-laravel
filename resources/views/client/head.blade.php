@@ -14,7 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
     rel="stylesheet"
 />
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- font icon -->
 <script
     type="module"
@@ -28,4 +28,6 @@
 <!-- style css -->
 <link rel="stylesheet" href="/client/css/style.css" />
 <link rel="stylesheet" href="/client/css/normalize.css" />
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @yield('link')

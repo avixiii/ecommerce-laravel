@@ -9,7 +9,8 @@
             <div class="breadcrumbs">
                 <a class="breadcrumbs__link" href="">Trang chủ</a>
                 <span class="breadcrumbs__next">
-              <ion-icon name="arrow-forward-circle-outline" role="img" class="md hydrated" aria-label="arrow forward circle outline"></ion-icon>
+              <ion-icon name="arrow-forward-circle-outline" role="img" class="md hydrated"
+                        aria-label="arrow forward circle outline"></ion-icon>
             </span>
                 <a href="#" class="breadcrumbs__link">{{ $product->category->name }}</a>
             </div>
@@ -51,7 +52,8 @@
                 <div class="top">
                     <div class="left">
                         <h3 class="product-details__info-title">{{ $product->name }}</h3>
-                        <p class="product-details__info-price">{{number_format($product->price_sale, 0, '.', '.')}} VNĐ</p>
+                        <p class="product-details__info-price">{{number_format($product->price_sale, 0, '.', '.')}}
+                            VNĐ</p>
                         <br/>
                         <hr/>
                         <p class="product-details__info-category">
@@ -60,7 +62,8 @@
                         <hr/>
                     </div>
                     <div class="right">
-                        <div class="sale">{{ (($product->price - $product->price_sale) / ($product->price)) * 100 }}<sup>%</sup></div>
+                        <div class="sale">{{ (($product->price - $product->price_sale) / ($product->price)) * 100 }}
+                            <sup>%</sup></div>
                     </div>
                 </div>
                 <div class="bottom">
@@ -68,14 +71,19 @@
                         {{ $product->description }}
                     </p>
                     <br/>
-                    <input
-                        min="1"
-                        value="1"
-                        name="quantity"
-                        type="number"
-                        class="select-quantity mb-5"
-                    />
-                    <a href="#" class="btn btn--rectangle mt-8">THÊM VÀO GIỎ HÀNG</a>
+                    <form action="">
+                        <input
+                            min="1"
+                            value="1"
+                            name="quantity"
+                            type="number"
+                            class="select-quantity mb-5"
+                            id="quantity"
+                        />
+
+                        <a data-url="{{ route('addToCart', ['id' => $product->id, 'quantity' => ""]) }}"
+                           href=""  class="btn btn--rectangle mt-8 add_to_cart">THÊM VÀO GIỎ HÀNG</a>
+                    </form>
                 </div>
             </div>
         </div>
