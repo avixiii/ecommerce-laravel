@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client\CustomersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -9,6 +10,8 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductsController as ProductsClient;
 use App\Http\Controllers\Client\CartController;
+
+require __DIR__ . '/customer.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -76,3 +79,7 @@ Route::prefix('products')->group(function () {
     Route::get('{slug}', [ProductsClient::class, 'show']);
     Route::get('add-to-cart/{id}', [CartController::class, 'add'])->name('addToCart');
 });
+
+
+
+// Auth
