@@ -4,9 +4,9 @@
 </div>
 <div class="form-user form-user-log">
     <div class="user-info">
-        <img class="user-avatar" src="https://fakeimg.pl/50/">
+        <img class="user-avatar" src="{{ Auth::guard('customer')->user()->avatar ? Auth::guard('customer')->user()->avatar : 'https://fakeimg.pl/50/'}}">
         <div>
-            <p class="user-name">PHẠM ANH TUẤN</p>
+            <p class="user-name">{{ Auth::guard('customer')->user()->full_name }}</p>
             <p class="change-pass">đổi mật khẩu</p>
         </div>
     </div>
