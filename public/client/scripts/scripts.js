@@ -56,6 +56,10 @@ if (slider) {
     });
 }
 
+
+
+
+
 // không cho phép nhập số âm
 const quantity = document.querySelector(".select-quantity");
 if (quantity) {
@@ -72,13 +76,53 @@ if (quantity) {
     };
 }
 
+let i = 0;
+$('.user').on('click', function () {
+    if (i % 2 === 0) {
+        i++
+        $('.form-login').css('display', 'flex')
+    } else {
+        $('.form-login').css('display', 'none')
+        i++
+    }
+})
 
 
+$('.switch-login').on('click', function (e) {
+    e.preventDefault()
+    $('.form-register').css('display', 'none')
+    $('.form-login').css('display', 'flex')
+})
 
+$('.switch-register').on('click', function (e) {
+    e.preventDefault()
+    $('.form-login').css('display', 'none')
+    $('.form-register').css('display', 'flex')
+})
 
 // Xử lý giỏ hàng
 
+function deleteRow(r) {
+    let i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("cart").deleteRow(i);
+}
 
+
+function removeRow(id, url, r) {
+    $.ajax({
+        type: 'DELETE',
+        datatype: 'JSON',
+        data: {id},
+        url: url,
+        success: function (result) {
+            if (result.error === false) {
+                deleteRow(r)
+            } else {
+                alert('Xoá thất bại')
+            }
+        }
+    })
+}
 
 function addToCart(e) {
     e.preventDefault();
@@ -101,4 +145,33 @@ function addToCart(e) {
 
 $(function () {
     $('.add_to_cart').on('click', addToCart)
+
+    // DELETE ITEM CART
+    $('.delete_item').on('click', function (e) {
+        e.preventDefault()
+        alert('delete')
+    })
+
+    $('.add').on('click', function () {
+        // get quantity value
+        let quantity = $('.quantity').val();
+        quantity = Number(quantity) + 1;
+        $('.quantity').val(quantity)
+        console.log(quantity)
+    })
+
+
+    // remove
+    $('.remove').on('click', function () {
+        let quantity = $('.quantity').val();
+        quantity = Number(quantity) - 1;
+        if (quantity <= 1) {
+            $('.quantity').val(1)
+        } else {
+            $('.quantity').val(quantity)
+        }
+        console.log(quantity)
+    })
+
+
 })

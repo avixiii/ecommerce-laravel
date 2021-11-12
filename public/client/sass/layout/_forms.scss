@@ -1,7 +1,61 @@
 .form {
-  &-horizontal {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem 0;
-  }
+    &-horizontal {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem 0;
+    }
+
+    &-user {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        position: absolute;
+        top: 10rem;
+        right: 19rem;
+        display: flex;
+        flex-direction: column;
+        gap: 18px 0;
+        z-index: 1000000;
+        width: 296px;
+        border: 1px solid $primary-color;
+        background-color: #fff;
+        justify-content: space-around;
+        display: none;
+        .group-button {
+            margin: 0;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            .btn {
+                font-size: 1.4rem;
+            }
+        }
+
+        .forget-password {
+            font-size: 1.1rem;
+            color: $text-secondary;
+            font-family: $secondary-font;
+            margin-left: 166px;
+            display: block;
+            margin-top: -20px;
+            cursor: pointer;
+            transition: 0.3s all;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+
+        &::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: -21px;
+            left: 8px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid $primary-color;
+        }
+    }
 }
+

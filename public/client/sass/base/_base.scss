@@ -91,3 +91,17 @@ html {
 hr {
   color: #d1d5db;
 }
+
+.remove,
+.add{
+    font-size: 2.5rem;
+    background-color: $text-primary;
+    height: 3.1rem;
+    width: 3.1rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #ccc;
+    cursor: pointer;
+}
+
