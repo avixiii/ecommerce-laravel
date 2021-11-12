@@ -297,6 +297,59 @@ input[type=number] {
   border-bottom: 10px solid #ffe115;
 }
 
+.form-user-log .user__list-item {
+  font-size: 1.3rem;
+  font-weight: 300;
+  transform: translateY(-30px);
+}
+.form-user-log .user__list-item .item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 40px;
+  width: 294px;
+  transition: 0.2s;
+}
+.form-user-log .user__list-item .item:hover {
+  background-color: rgba(222, 218, 218, 0.57);
+}
+.form-user-log .user__list-item .item a {
+  padding-top: 9px;
+  align-items: center;
+  padding-left: 23px;
+  width: 294px;
+  display: block;
+  color: #2d3a4b;
+  height: 40px;
+}
+
+.user-info {
+  display: flex;
+  margin-left: 23px;
+  margin-bottom: 22px;
+  gap: 0 16px;
+}
+.user-info .user-name {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+.user-info .user-avatar {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.user-info .change-pass {
+  font-size: 1.2rem;
+  margin-top: 5px;
+  color: #2d3a4b;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.user-info .change-pass:hover {
+  color: #ffe115;
+}
+
 .btn {
   display: block;
   width: 21rem;

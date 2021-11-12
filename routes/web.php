@@ -82,4 +82,7 @@ Route::prefix('products')->group(function () {
 
 
 
-// Auth
+// Checkout
+Route::prefix('checkout')->group(function () {
+    Route::get('cart', [CartController::class, 'index'])->name('cart');
+});

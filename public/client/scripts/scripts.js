@@ -1,3 +1,11 @@
+/*
+|--------------------------------------------------------------------------
+| @author: phạm anh tuấn
+| @email : tuanpham5024@gmail.com
+|--------------------------------------------------------------------------
+*/
+
+
 // AJAX
 $.ajaxSetup({
     headers: {
@@ -57,9 +65,6 @@ if (slider) {
 }
 
 
-
-
-
 // không cho phép nhập số âm
 const quantity = document.querySelector(".select-quantity");
 if (quantity) {
@@ -87,6 +92,17 @@ $('.user').on('click', function () {
     }
 })
 
+let j = 0
+$('.user-log').on('click', function () {
+    if (j % 2 === 0) {
+        j++
+        $('.form-user-log').css('display', 'flex')
+    } else {
+        $('.form-user-log').css('display', 'none')
+        j++
+    }
+})
+
 
 $('.switch-login').on('click', function (e) {
     e.preventDefault()
@@ -99,6 +115,57 @@ $('.switch-register').on('click', function (e) {
     $('.form-login').css('display', 'none')
     $('.form-register').css('display', 'flex')
 })
+
+
+/*
+|--------------------------------------------------------------------------
+| LOGIN AND REGISTER WITH AJAX :
+|--------------------------------------------------------------------------
+*/
+
+
+function login(e) {
+    e.preventDefault()
+
+    let _token = $("input[name='_token']").val();
+    let url = $(this).data('url')
+    let data = $('.form-login').serialize()
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: data,
+        success: function (res) {
+            if (res.error === false) {
+                alert('Đăng nhập thành công')
+                location.reload();
+            } else {
+                alert(res.message)
+            }
+        }
+    });
+
+}
+
+function register(e) {
+    e.preventDefault()
+
+    let url = $(this).data('url')
+
+    let data = $('.form-register').serialize()
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: data,
+        success: function (res) {
+            if (res.error === false) {
+                alert('Tạo tài khoản thành công')
+            } else {
+                alert(res.message)
+            }
+        }
+    });
+}
+
 
 // Xử lý giỏ hàng
 
@@ -142,7 +209,6 @@ function addToCart(e) {
 }
 
 
-
 $(function () {
     $('.add_to_cart').on('click', addToCart)
 
@@ -173,5 +239,9 @@ $(function () {
         console.log(quantity)
     })
 
+    // LOGIN
 
+    $('.login').on('click', login)
+
+    $('.register').on('click', register)
 })

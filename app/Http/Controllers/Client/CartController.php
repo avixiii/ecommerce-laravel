@@ -13,10 +13,11 @@ class CartController extends Controller
     public function index()
     {
         if (Auth::guard('customer')->check()) {
-            return view('client.cart.index');
+
         } else {
 
         }
+        return view('client.cart.index');
     }
 
     public function add($id)
