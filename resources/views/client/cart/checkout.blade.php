@@ -30,17 +30,33 @@
         @csrf
             <div class="checkout__address">
                 <h3 class="title mt-8" style="float: left">ĐỊA CHỈ GIAO HÀNG</h3>
+                @if(\Illuminate\Support\Facades\Auth::guard('customer')->check())
+                    <div style="margin-top: 60px" class="group-input flex-row">
+
+                        <input value="{{ Auth::guard('customer')->user()->full_name }}" name="name" placeholder="HỌ VÀ TÊN" type="text" class="input-rectangle">
+                        <input value="{{ Auth::guard('customer')->user()->phone }}" name="phone" placeholder="SỐ ĐIỆN THOẠI" type="number" class="input-rectangle">
+                    </div>
+                    <div class="group-input flex-row">
+                        <input value="{{ Auth::guard('customer')->user()->address }}" name="address" placeholder="ĐỊA CHỈ" type="text" class="input-rectangle">
+                        <input value="{{ Auth::guard('customer')->user()->email }}" name="email" placeholder="EMAIL" type="email" class="input-rectangle">
+                    </div>
+                    <div class="group-input">
+                    <textarea name="note" placeholder="GHI CHÚ" type="text"
+                              style="width: 96%; padding: 12px; font-size: 1.3rem;"></textarea>
+                    </div>
+                @endif
                 <div style="margin-top: 60px" class="group-input flex-row">
-                    <input name="name" placeholder="HỌ VÀ TÊN" type="text" class="input-rectangle">
-                    <input name="phone" placeholder="SỐ ĐIỆN THOẠI" type="number" class="input-rectangle">
+
+                    <input value="" name="name" placeholder="HỌ VÀ TÊN" type="text" class="input-rectangle">
+                    <input value="" name="phone" placeholder="SỐ ĐIỆN THOẠI" type="number" class="input-rectangle">
                 </div>
                 <div class="group-input flex-row">
-                    <input name="address" placeholder="ĐỊA CHỈ" type="text" class="input-rectangle">
-                    <input name="email" placeholder="EMAIL" type="email" class="input-rectangle">
+                    <input value="" name="address" placeholder="ĐỊA CHỈ" type="text" class="input-rectangle">
+                    <input value="" name="email" placeholder="EMAIL" type="email" class="input-rectangle">
                 </div>
                 <div class="group-input">
-                <textarea name="note" placeholder="GHI CHÚ" type="text"
-                          style="width: 96%; padding: 12px; font-size: 1.3rem;"></textarea>
+                    <textarea name="note" placeholder="GHI CHÚ" type="text"
+                              style="width: 96%; padding: 12px; font-size: 1.3rem;"></textarea>
                 </div>
             </div>
             <div class="checkout__info">
@@ -68,7 +84,7 @@
                             <div class="order-item">
                                 <div class="item-name">{{ $item['name'] }}</div>
                                 <div class="price">
-                                    {{ $item['price_sale'] === null ? number_format( $item['quantity'] * $item['price_sale'] , 0, '.', '.') : number_format($item['quantity'] * $item['price'] , 0, '.', '.') }}
+                                    {{ $item['price_sale'] ? number_format( $item['quantity'] * $item['price_sale'] , 0, '.', '.') : number_format($item['quantity'] * $item['price'] , 0, '.', '.') }}
                                     VNĐ
                                 </div>
                             </div>

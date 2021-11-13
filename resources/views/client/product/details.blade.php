@@ -52,8 +52,14 @@
                 <div class="top">
                     <div class="left">
                         <h3 class="product-details__info-title">{{ $product->name }}</h3>
+                        @if($product->price_sale)
                         <p class="product-details__info-price">{{number_format($product->price_sale, 0, '.', '.')}}
                             VNĐ</p>
+                        @else
+                            <p class="product-details__info-price">{{number_format($product->price, 0, '.', '.')}}
+                                VNĐ</p>
+                        @endif
+
                         <br/>
                         <hr/>
                         <p class="product-details__info-category">
@@ -62,8 +68,11 @@
                         <hr/>
                     </div>
                     <div class="right">
-                        <div class="sale">{{ (($product->price - $product->price_sale) / ($product->price)) * 100 }}
-                            <sup>%</sup></div>
+                        @if($product->price_sale)
+                            <div class="sale">{{ (($product->price - $product->price_sale) / ($product->price)) * 100 }}
+                                <sup>%</sup></div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="bottom">
@@ -74,6 +83,7 @@
                     <form action="">
                         <input
                             min="1"
+                            value="1"
                             name="quantity"
                             type="number"
                             class="select-quantity mb-5"

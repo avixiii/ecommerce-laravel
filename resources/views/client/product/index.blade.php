@@ -90,9 +90,9 @@
                                 <div
                                     class="price price-sale mt-8">{{number_format($product->price_sale, 0, '.', '.')}}</div>
                                 <div style="font-size: 14px; font-weight: 300 " class="price mt-8">
-                                    <strike> {{number_format($product->price, 0, '.', '.')}}</strike></div>
+                                    <strike> {{number_format($product->price, 0, '.', '.')}} VNĐ</strike></div>
                             @else
-                                <div class="price mt-8">{{number_format($product->price, 0, '.', '.')}}</div>
+                                <div class="price mt-8">{{number_format($product->price, 0, '.', '.')}} VNĐ</div>
                             @endif
                         </div>
                     </div>

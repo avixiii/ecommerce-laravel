@@ -16,6 +16,7 @@ class OrderDetails extends Model
         'quantity',
         'price',
         'total_price',
-        'price_sale'
+        'price_sale',
+        'order_id'
     ];
 }
