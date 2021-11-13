@@ -105,6 +105,12 @@ hr {
   cursor: pointer;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-around;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -1009,6 +1015,52 @@ input[type=number] {
 }
 .list-sort .sort-item:hover {
   color: #ffe115;
+}
+
+.checkout {
+  display: flex;
+}
+.checkout__address {
+  width: 50%;
+  gap: 12px 0;
+}
+.checkout__address .group-input {
+  margin: 30px 0;
+}
+.checkout__info {
+  margin-left: 10rem;
+  width: 50%;
+}
+.checkout__info .list-order {
+  margin-top: 2rem;
+  width: 100%;
+  border: 1px solid #ffe115;
+}
+.checkout__info .list-order .order-item {
+  display: flex;
+  padding: 12px 8px;
+  justify-content: space-between;
+}
+.checkout__info .list-order .order-item .item-name {
+  font-size: 1.6rem;
+}
+.checkout__info .list-order .order-item .price {
+  font-size: 1.5rem;
+}
+.checkout__info .list-order .total-cost {
+  font-size: 1.8rem;
+}
+
+.payment-method {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px 0;
+}
+.payment-method .group {
+  font-size: 1.5rem;
+  color: #2d3a4b;
+  font-weight: 400;
 }
 
 /*# sourceMappingURL=style.css.map */

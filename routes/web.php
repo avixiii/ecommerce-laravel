@@ -10,6 +10,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductsController as ProductsClient;
 use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\OrdersController;
 
 require __DIR__ . '/customer.php';
 
@@ -87,4 +88,6 @@ Route::prefix('products')->group(function () {
 Route::prefix('checkout')->group(function () {
     Route::get('cart', [CartController::class, 'index'])->name('cart');
     Route::delete('cart/destroy/{id}', [CartController::class, 'destroy'])->name('deleteItemCart');
+
+    Route::get('/payment', [OrdersController::class, 'index'])->name('payment');
 });
