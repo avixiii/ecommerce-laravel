@@ -89,5 +89,6 @@ Route::prefix('checkout')->group(function () {
     Route::get('cart', [CartController::class, 'index'])->name('cart');
     Route::delete('cart/destroy/{id}', [CartController::class, 'destroy'])->name('deleteItemCart');
 
-    Route::get('/payment', [OrdersController::class, 'index'])->name('payment');
+    Route::get('payment', [OrdersController::class, 'index'])->name('payment');
+    Route::post('payment/store', [OrdersController::class, 'store'])->name('payment.store');
 });

@@ -26,53 +26,73 @@
 @endsection
 
 @section('content')
-    <section class="checkout container">
-        <div class="checkout__address">
-            <h3 class="title mt-8" style="float: left">ĐỊA CHỈ GIAO HÀNG</h3>
-            <div style="margin-top: 60px" class="group-input flex-row">
-                <input placeholder="HỌ VÀ TÊN" type="text" class="input-rectangle">
-                <input placeholder="SỐ ĐIỆN THOẠI" type="number" class="input-rectangle">
-            </div>
-            <div class="group-input flex-row">
-                <input placeholder="ĐỊA CHỈ" type="text" class="input-rectangle">
-                <input placeholder="EMAIL" type="email" class="input-rectangle">
-            </div>
-        </div>
-        <div class="checkout__info">
-            <h3 class="title mt-8">YOUR ORDER</h3>
-            <div class="list-order">
-                <div class="order-item">
-                    <div class="item-name">WOOD CHAIR</div>
-                    <div class="price">100.000 VNĐ</div>
-
+    <form method="post" action="{{ route('payment.store') }}" class="checkout container">
+        @csrf
+            <div class="checkout__address">
+                <h3 class="title mt-8" style="float: left">ĐỊA CHỈ GIAO HÀNG</h3>
+                <div style="margin-top: 60px" class="group-input flex-row">
+                    <input name="name" placeholder="HỌ VÀ TÊN" type="text" class="input-rectangle">
+                    <input name="phone" placeholder="SỐ ĐIỆN THOẠI" type="number" class="input-rectangle">
                 </div>
-                <hr style="color: #ccc">
-                <div class="order-item">
-                    <div class="item-name">WOOD CHAIR</div>
-                    <div class="price">100.000 VNĐ</div>
+                <div class="group-input flex-row">
+                    <input name="address" placeholder="ĐỊA CHỈ" type="text" class="input-rectangle">
+                    <input name="email" placeholder="EMAIL" type="email" class="input-rectangle">
                 </div>
-                <hr>
-                <div class="order-item mt-8">
-                    <div class="item-name">TỔNG TIỀN</div>
-                    <div class="total-cost">200.000 VNĐ</div>
+                <div class="group-input">
+                <textarea name="note" placeholder="GHI CHÚ" type="text"
+                          style="width: 96%; padding: 12px; font-size: 1.3rem;"></textarea>
                 </div>
             </div>
-
-            <form class="payment-method">
-                <div class="group">
-                    <input name="payment-method" type="radio" value="paypal" />
-                    <span>Paypal</span>
+            <div class="checkout__info">
+                <h3 class="title mt-8">YOUR ORDER</h3>
+                @if(\Illuminate\Support\Facades\Auth::guard('customer')->check())
+                    <div class="list-order">
+                        @foreach($carts as $item)
+                            <div class="order-item">
+                                <div class="item-name">{{ $item->name }}</div>
+                                <div
+                                    class="price">{{ $item->price_sale ? number_format( $item->quantity * $item->price_sale , 0, '.', '.') : number_format( $item->quantity * $item->price , 0, '.', '.') }}
+                                    VNĐ
+                                </div>
+                            </div>
+                            <hr style="color: #ccc">
+                        @endforeach
+                        <div class="order-item mt-8">
+                            <div class="item-name">TỔNG TIỀN</div>
+                            <div class="total-cost">{{ number_format( $total_price , 0, '.', '.') }} VNĐ</div>
+                        </div>
+                    </div>
+                @else
+                    <div class="list-order">
+                        @foreach($carts as $item)
+                            <div class="order-item">
+                                <div class="item-name">{{ $item['name'] }}</div>
+                                <div class="price">
+                                    {{ $item['price_sale'] === null ? number_format( $item['quantity'] * $item['price_sale'] , 0, '.', '.') : number_format($item['quantity'] * $item['price'] , 0, '.', '.') }}
+                                    VNĐ
+                                </div>
+                            </div>
+                            <hr style="color: #ccc">
+                        @endforeach
+                        <div class="order-item mt-8">
+                            <div class="item-name">TỔNG TIỀN</div>
+                            <div class="total-cost">{{ number_format( $total_price , 0, '.', '.') }} VNĐ</div>
+                        </div>
+                    </div>
+                @endif
+                <div class="payment-method">
+                    @foreach($payment_method as $method)
+                        <div class="group">
+                            <input name="payment-method" type="radio" value="{{ $method->id }}"/>
+                            <span>{{ $method->name }}</span>
+                        </div>
+                    @endforeach
+                    <div class="group mt-8">
+                        <button style="cursor: pointer; border: none" class="btn btn--rectangle">ĐẶT HÀNG</button>
+                    </div>
                 </div>
-                <div class="group">
-                    <input name="payment-method" type="radio" value="Thanh toán khi nhận hàng" />
-                    <span>Thanh toán khi nhận hàng</span>
-                </div>
-                <div class="group mt-8">
-                    <a href="" class="btn btn--rectangle">ĐẶT HÀNG</a>
-                </div>
-            </form>
-        </div>
-    </section>
+            </div>
+    </form>
     <section class="about">
         <div class="content container">
             <h2 class="title">THÔNG TIN CỬA HÀNG</h2>

@@ -100,14 +100,14 @@
         @if($carts->count() !== 0)
             <section class="checkout container" style="margin-bottom: 20rem">
                 <div class="total-cost"></div>
-                <a href="" style="float: right; background-color: #ffe115; color: white; cursor: pointer" class="btn btn--rectangle">CHECK OUT</a>
+                <a href="{{ route('payment') }}" style="float: right; background-color: #ffe115; color: white; cursor: pointer" class="btn btn--rectangle">CHECK OUT</a>
             </section>
         @endif
     @else
         @if(isset($carts))
         <section class="checkout container" style="margin-bottom: 20rem">
             <div class="total-cost"></div>
-            <a href="" style="float: right; background-color: #ffe115; color: white; cursor: pointer" class="btn btn--rectangle">CHECK OUT</a>
+            <a href="{{ route('payment') }}" style="float: right; background-color: #ffe115; color: white; cursor: pointer" class="btn btn--rectangle">CHECK OUT</a>
         </section>
         @endif
     @endif
