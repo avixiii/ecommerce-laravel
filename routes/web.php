@@ -78,6 +78,7 @@ Route::prefix('products')->group(function () {
     Route::get('/', [ProductsClient::class, 'index'])->name('products');
     Route::get('{slug}', [ProductsClient::class, 'show']);
     Route::get('add-to-cart/{id}', [CartController::class, 'add'])->name('addToCart');
+    Route::get('delete-one-item/{id}', [CartController::class, 'delete'])->name('deleteOneItem');
 });
 
 
@@ -85,4 +86,5 @@ Route::prefix('products')->group(function () {
 // Checkout
 Route::prefix('checkout')->group(function () {
     Route::get('cart', [CartController::class, 'index'])->name('cart');
+    Route::delete('cart/destroy/{id}', [CartController::class, 'destroy'])->name('deleteItemCart');
 });

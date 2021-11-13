@@ -74,7 +74,6 @@
                     <form action="">
                         <input
                             min="1"
-                            value="1"
                             name="quantity"
                             type="number"
                             class="select-quantity mb-5"

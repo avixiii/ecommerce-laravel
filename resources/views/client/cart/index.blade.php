@@ -29,7 +29,7 @@
             <thead border="1" class="cart__header">
             <tr class="cart__header">
                 <th class="cart__list-title">SẢN PHẨM</th>
-                <th class="cart__list-title">GIÁ</th>
+                <th class="cart__list-title">TÊN SẢN PHẨM</th>
                 <th class="cart__list-title">SỐ LƯỢNG</th>
                 <th class="cart__list-title">TỔNG TIỀN</th>
                 <th class="cart__list-title"></th>
@@ -37,28 +37,103 @@
 
             </thead>
             <tbody>
-                <tr class="cart__item">
+            @if(Auth::guard('customer')->check() === true)
+                @foreach($carts as $item)
+                    <tr class="cart__item" id="item-{{$item->id}}" data-item="{{$item->id}}">
+                        <th class="cart__item-image">
+                            <img src="{{ $item->image_list }}">
+                        </th>
+                        <th class="cart__item-title">
+                            {{ $item->name }}
+                        </th>
+                        <th class="cart__item-quantity">
+                            <span data-url="{{ route('deleteOneItem', ['id' => $item->id, 'quantity' => '1']) }}" class="remove"><ion-icon name="remove-circle-outline"></ion-icon></span>
+                            <input disabled value="{{ $item->quantity }}" class="select-quantity quantity"
+                                   type="number">
+                            <span data-url="{{ route('addToCart', ['id' => $item->id, 'quantity' => '1']) }}" class="add"><ion-icon name="add-circle-outline"></ion-icon></span>
+                        </th>
+                        <th class="cart__item-price">
+                            {{ $item->price_sale ? number_format($item->price_sale * $item->quantity, 0, '.', '.')  : number_format($item->price * $item->quantity, 0, '.', '.') }}
+                            VNĐ
+                        </th>
+                        <th>
+                            <a data-url="{{ route('deleteItemCart', ['id' => $item->id]) }}"
+                               href=""
+                               class="cart__item-delete delete_item">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </a>
+                        </th>
+                    </tr>
+                @endforeach
+            @else
+                @if(isset($carts))
+                    @foreach($carts as $item)
+                        <tr class="cart__item">
                     <th class="cart__item-image">
-                        <img src="https://fakeimg.pl/170x170/">
+                        <img src="{{ $item['thumb'] }}">
                     </th>
                     <th class="cart__item-title">
-                        Giày Nike AF1
+                        {!! $item['name'] !!}
                     </th>
                     <th class="cart__item-quantity">
-                        <span class="remove"><ion-icon name="remove-circle-outline"></ion-icon></span>
-                        <input disabled value="1" class="select-quantity quantity" type="number">
-                        <span class="add"><ion-icon name="add-circle-outline"></ion-icon></span>
+                        <span data-url="{{ route('deleteOneItem', ['id' => $item['product_id'], 'quantity' => '']) }}" class="remove"><ion-icon name="remove-circle-outline"></ion-icon></span>
+                        <input disabled value="{{ $item['quantity'] }}" class="select-quantity quantity" type="number">
+                        <span data-url="{{ route('addToCart', ['id' => $item['product_id'], 'quantity' => '']) }}" class="add"><ion-icon name="add-circle-outline"></ion-icon></span>
                     </th>
                     <th class="cart__item-price">
-                        100.000 VNĐ
+                        {{ $item['price_sale'] ? number_format((int)$item['price_sale'] * (int)$item['quantity'], 0, '.', '.')  : number_format((int)$item['price'] * (int)$item['quantity'], 0, '.', '.') }} VNĐ
                     </th>
                     <th>
-                        <a class="cart__item-delete delete_item" href="">
+                        <a data-url="{{ route('deleteItemCart', ['id' => $item['product_id']]) }}"
+                           class="cart__item-delete delete_item">
                             <ion-icon name="close-circle-outline"></ion-icon>
                         </a>
                     </th>
                 </tr>
+                    @endforeach
+                @endif
+            @endif
             </tbody>
         </table>
+    </section>
+    @if(Auth::guard('customer')->check() === true)
+        @if($carts->count() !== 0)
+            <section class="checkout container" style="margin-bottom: 20rem">
+                <div class="total-cost"></div>
+                <a href="" style="float: right; background-color: #ffe115; color: white; cursor: pointer" class="btn btn--rectangle">CHECK OUT</a>
+            </section>
+        @endif
+    @else
+        @if(isset($carts))
+        <section class="checkout container" style="margin-bottom: 20rem">
+            <div class="total-cost"></div>
+            <a href="" style="float: right; background-color: #ffe115; color: white; cursor: pointer" class="btn btn--rectangle">CHECK OUT</a>
+        </section>
+        @endif
+    @endif
+    <section class="about">
+        <div class="content container">
+            <h2 class="title">THÔNG TIN CỬA HÀNG</h2>
+            <br/>
+            <p class="desc mt-8">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+                repudiandae ea aliquam rem, aliquid, libero tempore tempora eaque
+                deserunt animi temporibus!
+            </p>
+        </div>
+        <div class="social container">
+            <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="#" class="social-link">
+                <ion-icon name="logo-github"></ion-icon>
+            </a>
+            <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+            <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+        </div>
     </section>
 @endsection

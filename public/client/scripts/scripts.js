@@ -166,30 +166,7 @@ function register(e) {
     });
 }
 
-
 // Xử lý giỏ hàng
-
-function deleteRow(r) {
-    let i = r.parentNode.parentNode.rowIndex;
-    document.getElementById("cart").deleteRow(i);
-}
-
-
-function removeRow(id, url, r) {
-    $.ajax({
-        type: 'DELETE',
-        datatype: 'JSON',
-        data: {id},
-        url: url,
-        success: function (result) {
-            if (result.error === false) {
-                deleteRow(r)
-            } else {
-                alert('Xoá thất bại')
-            }
-        }
-    })
-}
 
 function addToCart(e) {
     e.preventDefault();
@@ -200,7 +177,7 @@ function addToCart(e) {
         url: url,
         dataType: 'JSON',
         success: function (data) {
-            console.log(data)
+            alert('Thêm sản phẩm thành công ')
         },
         error: function (data) {
             console.log(data)
@@ -208,35 +185,66 @@ function addToCart(e) {
     });
 }
 
-
 $(function () {
     $('.add_to_cart').on('click', addToCart)
 
-    // DELETE ITEM CART
+    // xoá sản phẩm khỏi cart
     $('.delete_item').on('click', function (e) {
         e.preventDefault()
-        alert('delete')
+        let url = $(this).data('url')
+        $.ajax({
+            type: 'DELETE',
+            datatype: 'JSON',
+            url: url,
+            success: function (result) {
+                if (result.error === false) {
+                    alert('Đã xoá sản phẩm khỏi giỏ hàng')
+                } else {
+                    alert('Sảy ra lỗi không thể xoá sản phẩm')
+                }
+            }
+        })
     })
 
-    $('.add').on('click', function () {
+    // tăng số lượng sản phẩm lên 1
+    $('.add').on('click', function (e) {
         // get quantity value
-        let quantity = $('.quantity').val();
-        quantity = Number(quantity) + 1;
-        $('.quantity').val(quantity)
-        console.log(quantity)
+        e.preventDefault();
+
+        let url = $(this).data('url') + 1
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'JSON',
+            success: function (data) {
+                alert('Thêm sản phẩm thành công ')
+                location.reload();
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        });
     })
 
+    // giảm số lượng sản phẩm xuống 1
+    $('.remove').on('click', function (e) {
+        e.preventDefault();
 
-    // remove
-    $('.remove').on('click', function () {
-        let quantity = $('.quantity').val();
-        quantity = Number(quantity) - 1;
-        if (quantity <= 1) {
-            $('.quantity').val(1)
-        } else {
-            $('.quantity').val(quantity)
-        }
-        console.log(quantity)
+        let url = $(this).data('url') + 1
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'JSON',
+            success: function (data) {
+                if (data.error === false) {
+                    alert('đã giảm xuống 1 đơn vị')
+                    location.reload();
+                } else {
+                    alert(data.message)
+                    location.reload();
+                }
+            }
+        });
     })
 
     // LOGIN

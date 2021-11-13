@@ -30,7 +30,7 @@
                     <div onclick="location.href='{{ route('cart') }}'" class="cart">
                         <ion-icon name="cart-outline" role="img" class="md hydrated"
                                   aria-label="cart outline"></ion-icon>
-                        <div class="quantity">5</div>
+                        <div class="quantity">4</div>
                     </div>
                     <div class="search">
                         <ion-icon name="search-outline" role="img" class="md hydrated"
