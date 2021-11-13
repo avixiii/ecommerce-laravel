@@ -47,10 +47,10 @@
                             {{ $item->name }}
                         </th>
                         <th class="cart__item-quantity">
-                            <span data-url="{{ route('deleteOneItem', ['id' => $item->id, 'quantity' => '1']) }}" class="remove"><ion-icon name="remove-circle-outline"></ion-icon></span>
+                            <span data-url="{{ route('deleteOneItem', ['id' => $item->id, 'quantity' => '']) }}" class="remove"><ion-icon name="remove-circle-outline"></ion-icon></span>
                             <input disabled value="{{ $item->quantity }}" class="select-quantity quantity"
                                    type="number">
-                            <span data-url="{{ route('addToCart', ['id' => $item->id, 'quantity' => '1']) }}" class="add"><ion-icon name="add-circle-outline"></ion-icon></span>
+                            <span data-url="{{ route('addToCart', ['id' => $item->id, 'quantity' => '']) }}" class="add"><ion-icon name="add-circle-outline"></ion-icon></span>
                         </th>
                         <th class="cart__item-price">
                             {{ $item->price_sale ? number_format($item->price_sale * $item->quantity, 0, '.', '.')  : number_format($item->price * $item->quantity, 0, '.', '.') }}
