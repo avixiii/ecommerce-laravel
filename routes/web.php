@@ -12,6 +12,7 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductsController as ProductsClient;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\OrdersController;
+use App\Http\Controllers\Admin\CommentsController as CommentsControllerAdmin;
 
 require __DIR__ . '/customer.php';
 
@@ -60,6 +61,13 @@ Route::middleware('auth')->group(function () {
             Route::get('edit/{product}', [ProductsController::class, 'show']);
             Route::post('edit/{product}', [ProductsController::class, 'update']);
             Route::delete('destroy', [ProductsController::class, 'destroy'])->name('product.destroy');
+        });
+
+        # Comment
+        Route::prefix('comments')->group(function () {
+            Route::get('/', [CommentsControllerAdmin::class, 'index'])->name('dashboard.comments');
+            Route::post('status', [CommentsControllerAdmin::class, 'status'])->name('dashboard.status');
+            Route::post('destroy', [CommentsControllerAdmin::class, 'destroy'])->name('dashboard.destroy');
         });
 
         # Upload
