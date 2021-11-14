@@ -44,20 +44,22 @@
                     <textarea name="note" placeholder="GHI CHÚ" type="text"
                               style="width: 96%; padding: 12px; font-size: 1.3rem;"></textarea>
                     </div>
-                @endif
-                <div style="margin-top: 60px" class="group-input flex-row">
+                @else
+                    <div style="margin-top: 60px" class="group-input flex-row">
 
-                    <input value="" name="name" placeholder="HỌ VÀ TÊN" type="text" class="input-rectangle">
-                    <input value="" name="phone" placeholder="SỐ ĐIỆN THOẠI" type="number" class="input-rectangle">
-                </div>
-                <div class="group-input flex-row">
-                    <input value="" name="address" placeholder="ĐỊA CHỈ" type="text" class="input-rectangle">
-                    <input value="" name="email" placeholder="EMAIL" type="email" class="input-rectangle">
-                </div>
-                <div class="group-input">
+                        <input value="" name="name" placeholder="HỌ VÀ TÊN" type="text" class="input-rectangle">
+                        <input value="" name="phone" placeholder="SỐ ĐIỆN THOẠI" type="number" class="input-rectangle">
+                    </div>
+                    <div class="group-input flex-row">
+                        <input value="" name="address" placeholder="ĐỊA CHỈ" type="text" class="input-rectangle">
+                        <input value="" name="email" placeholder="EMAIL" type="email" class="input-rectangle">
+                    </div>
+                    <div class="group-input">
                     <textarea name="note" placeholder="GHI CHÚ" type="text"
                               style="width: 96%; padding: 12px; font-size: 1.3rem;"></textarea>
-                </div>
+                    </div>
+                @endif
+
             </div>
             <div class="checkout__info">
                 <h3 class="title mt-8">YOUR ORDER</h3>
@@ -99,7 +101,7 @@
                 <div class="payment-method">
                     @foreach($payment_method as $method)
                         <div class="group">
-                            <input name="payment-method" type="radio" value="{{ $method->id }}"/>
+                            <input Checked name="payment-method" type="radio" value="{{ $method->id }}"/>
                             <span>{{ $method->name }}</span>
                         </div>
                     @endforeach

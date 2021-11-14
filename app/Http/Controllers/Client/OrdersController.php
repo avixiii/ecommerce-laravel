@@ -59,7 +59,7 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $name = $request->input('name');
-        $phone = $request->input('address');
+        $phone = $request->input('phone');
         $address = $request->input('address');
         $email = $request->input('email');
         $note = $request->input('note');
