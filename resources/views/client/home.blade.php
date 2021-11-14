@@ -11,208 +11,37 @@
                 deserunt animi temporibus!
             </p>
         </div>
+
         <div class="new-arrival__list">
+            @foreach($data as $item)
             <div class="new-arrival__item">
                 <div class="front">
                     <img
-                        src="https://fakeimg.pl/480x514/"
-                        alt=""
+                        src="{{ $item->image_list }}"
+                        alt="{{ $item->name }}"
                         class="new-arrival__item-image"
                     />
                     <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
+                        <h3 class="name">{{ $item->name }}</h3>
+                        <p class="desc mt-5">{{ \Illuminate\Support\Str::limit($item->description, 20, '...') }}</p>
                     </div>
                 </div>
                 <div class="back">
-                    <div class="new-arrival__item-price">100.000 VNĐ</div>
-                    <a class="new-arrival__item-search" href=""
+                    <div class="new-arrival__item-price">{{ $item->price_sale ? number_format($item->price_sale, 0, '.', '.') :  number_format($item->price, 0, '.', '.')}} VNĐ</div>
+                    <a class="new-arrival__item-search" href="/products/{{$item->slug}}"
                     >
                         <ion-icon class="icon" name="search-outline"></ion-icon
                         >
                     </a>
                     <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
+                        <h3 class="name">{{ $item->name }}</h3>
+                        <p class="desc mt-5">{{ \Illuminate\Support\Str::limit($item->description, 20, '...') }}</p>
                     </div>
                 </div>
             </div>
-            <div class="new-arrival__item">
-                <div class="front">
-                    <img
-                        src="https://fakeimg.pl/480x514/"
-                        alt=""
-                        class="new-arrival__item-image"
-                    />
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="new-arrival__item-price">100.000 VNĐ</div>
-                    <a class="new-arrival__item-search" href=""
-                    >
-                        <ion-icon class="icon" name="search-outline"></ion-icon
-                        >
-                    </a>
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
-            <div class="new-arrival__item">
-                <div class="front">
-                    <img
-                        src="https://fakeimg.pl/480x514/"
-                        alt=""
-                        class="new-arrival__item-image"
-                    />
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="new-arrival__item-price">100.000 VNĐ</div>
-                    <a class="new-arrival__item-search" href=""
-                    >
-                        <ion-icon class="icon" name="search-outline"></ion-icon
-                        >
-                    </a>
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
-            <div class="new-arrival__item">
-                <div class="front">
-                    <img
-                        src="https://fakeimg.pl/480x514/"
-                        alt=""
-                        class="new-arrival__item-image"
-                    />
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="new-arrival__item-price">100.000 VNĐ</div>
-                    <a class="new-arrival__item-search" href=""
-                    >
-                        <ion-icon class="icon" name="search-outline"></ion-icon
-                        >
-                    </a>
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
-            <div class="new-arrival__item">
-                <div class="front">
-                    <img
-                        src="https://fakeimg.pl/480x514/"
-                        alt=""
-                        class="new-arrival__item-image"
-                    />
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="new-arrival__item-price">100.000 VNĐ</div>
-                    <a class="new-arrival__item-search" href=""
-                    >
-                        <ion-icon class="icon" name="search-outline"></ion-icon
-                        >
-                    </a>
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
-            <div class="new-arrival__item">
-                <div class="front">
-                    <img
-                        src="https://fakeimg.pl/480x514/"
-                        alt=""
-                        class="new-arrival__item-image"
-                    />
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="new-arrival__item-price">100.000 VNĐ</div>
-                    <a class="new-arrival__item-search" href=""
-                    >
-                        <ion-icon class="icon" name="search-outline"></ion-icon
-                        >
-                    </a>
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
-            <div class="new-arrival__item">
-                <div class="front">
-                    <img
-                        src="https://fakeimg.pl/480x514/"
-                        alt=""
-                        class="new-arrival__item-image"
-                    />
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="new-arrival__item-price">100.000 VNĐ</div>
-                    <a class="new-arrival__item-search" href=""
-                    >
-                        <ion-icon class="icon" name="search-outline"></ion-icon
-                        >
-                    </a>
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
-            <div class="new-arrival__item">
-                <div class="front">
-                    <img
-                        src="https://fakeimg.pl/480x514/"
-                        alt=""
-                        class="new-arrival__item-image"
-                    />
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-                <div class="back">
-                    <div class="new-arrival__item-price">100.000 VNĐ</div>
-                    <a class="new-arrival__item-search" href=""
-                    >
-                        <ion-icon class="icon" name="search-outline"></ion-icon
-                        >
-                    </a>
-                    <div class="new-arrival__item-info">
-                        <h3 class="name">WOODEN CHAIR</h3>
-                        <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+
     </section>
     <section class="popular container">
         <div class="content">
@@ -326,7 +155,7 @@
             <a href="#" class="social-link">
                 <ion-icon name="logo-facebook"></ion-icon>
             </a>
-            <a href="#" class="social-link">
+            <a href="https://github.com/tuanpham5024" class="social-link">
                 <ion-icon name="logo-github"></ion-icon>
             </a>
             <a href="#" class="social-link">
@@ -339,7 +168,7 @@
     </section>
     <section class="newsletter">
         <div class="content container">
-            <h2 class="title">SẢN PHẨM PHỔ BIẾN</h2>
+            <h2 class="title">NHẬN BÀI VIẾT MỚI NHẤT</h2>
             <p class="desc mt-5">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
                 repudiandae ea aliquam rem, aliquid, libero tempore tempora eaque

@@ -83,9 +83,9 @@
                         </div>
                         <div class="product__item-bottom">
                             <div onclick="window.location='/products/{{ $product->slug }}';"
-                                 class="name mt-8">{{ $product->name }}</div>
+                                 class="name mt-8">{{ \Illuminate\Support\Str::limit($product->name , 15, '...') }}</div>
                             <div
-                                class="desc mt-8">{{ \Illuminate\Support\Str::limit($product->description, 50, '...') }}</div>
+                                class="desc mt-8">{{ \Illuminate\Support\Str::limit($product->description, 25, '...') }}</div>
                             @if($product->price_sale != 0)
                                 <div
                                     class="price price-sale mt-8">{{number_format($product->price_sale, 0, '.', '.')}}</div>

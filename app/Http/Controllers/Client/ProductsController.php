@@ -10,7 +10,7 @@ class ProductsController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Products::orderBy('created_at', 'DESC')->paginate(12);
+        $data = Products::orderBy('created_at', 'DESC')->paginate(8);
         $title = 'Danh sách sản phẩm';
 
         if ($request->input('sort_by') == 'tang_dan') {

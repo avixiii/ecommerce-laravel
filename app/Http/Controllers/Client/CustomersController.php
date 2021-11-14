@@ -70,5 +70,6 @@ class CustomersController extends Controller
 
     public function profile()
     {
+        return view('client.user.index');
     }
 }
