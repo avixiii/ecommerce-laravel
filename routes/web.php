@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client\CommentsController;
 use App\Http\Controllers\Client\CustomersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
@@ -92,3 +93,9 @@ Route::prefix('checkout')->group(function () {
     Route::get('payment', [OrdersController::class, 'index'])->name('payment');
     Route::post('payment/store', [OrdersController::class, 'store'])->name('payment.store');
 });
+
+
+// Comment
+
+Route::post('comments/store', [CommentsController::class, 'store'])->name('comments.store');
+Route::get('comments/destroy', [CommentsController::class, 'destroy'] )->name('comments.destroy');

@@ -661,6 +661,17 @@ input[type=number] {
   line-height: 40px;
 }
 
+.btn-delete-comment {
+  font-size: 1.8rem;
+  height: 1.8rem;
+  color: #2d3a4b;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+.btn-delete-comment:hover {
+  color: #ffe115;
+}
+
 .new-arrival__list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -939,6 +950,11 @@ input[type=number] {
 .product-details__info .top {
   display: flex;
   justify-content: space-between;
+}
+.product-details__bottom-content {
+  font-size: 1.6rem;
+  color: #2d3a4b;
+  font-family: serif;
 }
 .product-details__bottom .title {
   margin-top: 10rem;

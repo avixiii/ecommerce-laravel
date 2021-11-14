@@ -49,6 +49,12 @@
     }
   }
   &__bottom {
+      &-content {
+          font-size: 1.6rem;
+          color: $text-primary;
+          font-family: serif;
+
+      }
     .title {
       margin-top: 10rem;
       margin-bottom: 10rem;

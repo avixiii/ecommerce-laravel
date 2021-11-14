@@ -103,54 +103,23 @@
             </div>
         </div>
         <div class="product-details__feedback">
-            <h3 class="title">FEEDBACK</h3>
-            <div class="feedback">
-                <div class="feedback-item">
-                    <div class="feedback__author">
-                        Lâm Anh <span class="date">11/8/2021</span>
-                    </div>
-                    <div class="feedback__content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-                        ipsum blanditiis inventore corrupti praesentium aspernatur
-                        voluptas qui debitis sint ipsam, sed sit dolore quisquam maiores
-                        aliquid! Dolorem distinctio architecto sint.
-                    </div>
-                </div>
-                <hr style="margin-bottom: 4rem"/>
-                <div class="feedback-item">
-                    <div class="feedback__author">
-                        Lâm Anh <span class="date">11/8/2021</span>
-                    </div>
+            <h3 class="title">COMMENT</h3>
 
-                    <div class="feedback__content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-                        ipsum blanditiis inventore corrupti praesentium aspernatur
-                        voluptas qui debitis sint ipsam, sed sit dolore quisquam maiores
-                        aliquid! Dolorem distinctio architecto sint.
-                    </div>
-                </div>
-            </div>
-            <form class="form-horizontal" action="">
+            @include('client.comment.commentsdisplay')
+
+            <form method="post" class="form-horizontal" action="{{ route('comments.store') }}">
                 <!-- Cho người dùng không đăng nhập -->
-                <input
-                    class="input-rectangle"
-                    placeholder="Nhập tên của bạn"
-                    type="text"
-                />
-                <input
-                    class="input-rectangle"
-                    type="email"
-                    placeholder="Nhập địa chỉ email của bạn"
-                />
                 <textarea
                     class="textarea-rectangle"
                     placeholder="Nhập nội dung"
-                    name=""
+                    name="content"
                     id=""
                     cols="30"
                     rows="10"
                 ></textarea>
-                <a href="#" class="btn btn--rectangle">GỬI PHẢN HỒI</a>
+                <input name="product_id" hidden value="{{ $product->id }}">
+                <button class="btn btn--rectangle">GỬI PHẢN HỒI</button>
+                @csrf
             </form>
         </div>
     </section>

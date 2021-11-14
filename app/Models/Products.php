@@ -27,4 +27,10 @@ class Products extends Model
     {
         return $this->hasOne(Categories::class, 'id', 'category_id');
     }
+
+
+    public function comments()
+    {
+        return $this->hasMany(Comments::class, 'product_id','id')->whereNull('parent_id');
+    }
 }

@@ -1,0 +1,10 @@
+.btn-delete-comment {
+    font-size: 1.8rem;
+    height: 1.8rem;
+    color: $text-primary;
+    cursor: pointer;
+    margin-top: 2rem;
+    &:hover {
+        color: $primary-color;
+    }
+}

@@ -31,6 +31,6 @@ class ProductsController extends Controller
     public function show($slug = '')
     {
         $product = Products::where('slug', $slug)->where('status', 1)->first();
-        return view('client.product.details', ['product' => $product]);
+        return view('client.product.details', ['product' => $product, 'comments' => $product->comments]);
     }
 }
