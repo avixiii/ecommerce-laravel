@@ -17,8 +17,9 @@ class CommentsController extends Controller
             $input['customer_id'] = Auth::guard('customer')->id();
             $input['status'] = false;
             Comments::create($input);
+        } else {
+            session()->flash('error', 'Bạn phải đăng nhập mới có thẻ bình luận');
         }
-        session()->flash('error', 'Bạn phải đăng nhập mới có thẻ bình luận');
         return back();
     }
 

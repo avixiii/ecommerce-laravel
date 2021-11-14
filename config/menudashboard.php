@@ -17,8 +17,8 @@ return [
     ],
     [
         'label' => 'Đơn hàng',
-        'route' => 'dashboard.comments',
-        'icon' => 'zmdi zmdi-layers',
+        'route' => 'dashboard.orders',
+        'icon' => 'zmdi zmdi-shopping-cart',
         'items' => [
             [
                 'label' => 'Đơn hàng',
@@ -30,6 +30,6 @@ return [
     [
         'label' => 'Danh sách bình luận',
         'route' => 'dashboard.comments',
-        'icon' => 'zmdi zmdi-layers'
+        'icon' => 'zmdi zmdi-comment-alt-text'
     ],
 ];

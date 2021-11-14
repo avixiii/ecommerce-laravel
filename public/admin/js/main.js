@@ -28,7 +28,6 @@ function removeRow(id, url, r) {
 }
 
 
-
 // Upload
 
 $('#upload').change(function (e) {
@@ -42,7 +41,7 @@ $('#upload').change(function (e) {
         data: form,
         url: '/dashboard/upload/services',
         success: function (results) {
-            if(results.error === false) {
+            if (results.error === false) {
                 document.getElementById('image_show').innerHTML = '<a target="_blank"><img src="' + results.url + '" width="100px" alt=""></a>';
                 $('#file').val(results.url)
             } else {
@@ -51,3 +50,39 @@ $('#upload').change(function (e) {
         }
     })
 })
+
+// ORDER
+
+// giảm 1 đơn vị
+
+$('.remove-item').on('click', function (e) {
+    e.preventDefault()
+})
+
+$('.add-item').on('click', function (e) {
+    e.preventDefault()
+})
+
+
+//////////////////////////////////////////////////////////////////////
+$('input[type=radio][name=order_status]').change(function () {
+    if (confirm('Xác nhận thay đổi trạng thái đơn hàng')) {
+        let id = this.value;
+        let array = window.location.href.split("/");
+        let idOrder = array[array.length - 1]
+        let url = $(this).data('url');
+        $.ajax({
+            type: 'POST',
+            datatype: 'JSON',
+            data: {id, idOrder},
+            url: url,
+            success: function (result) {
+                if (result.error === false) {
+                    alert('Update thành công')
+                } else {
+                    alert('Update thất bại')
+                }
+            }
+        })
+    }
+});

@@ -13,6 +13,7 @@ use App\Http\Controllers\Client\ProductsController as ProductsClient;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\OrdersController;
 use App\Http\Controllers\Admin\CommentsController as CommentsControllerAdmin;
+use App\Http\Controllers\Admin\OrdersController as OrdersControllerAdmin;
 
 require __DIR__ . '/customer.php';
 
@@ -68,6 +69,18 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [CommentsControllerAdmin::class, 'index'])->name('dashboard.comments');
             Route::post('status', [CommentsControllerAdmin::class, 'status'])->name('dashboard.status');
             Route::post('destroy', [CommentsControllerAdmin::class, 'destroy'])->name('dashboard.destroy');
+        });
+
+
+        # Orders
+        Route::prefix('orders')->group(function() {
+            Route::get('/', [OrdersControllerAdmin::class, 'index'])->name('dashboard.orders');
+            Route::delete('destroy', [OrdersControllerAdmin::class, 'destroy']);
+            Route::get('edit/{order}', [OrdersControllerAdmin::class, 'show']);
+            Route::post('edit/status', [OrdersControllerAdmin::class, 'status'])->name('dashboard.orders.status');
+            Route::post('edit/inforuser', [OrdersControllerAdmin::class, 'inforuser'])->name('dashboard.orders.inforuser');
+            Route::post('edit/remove-item', [OrdersControllerAdmin::class, 'remove'])->name('dashboard.orders.remove');
+            Route::post('edit/add-item', [OrdersControllerAdmin::class, 'add'])->name('dashboard.orders.add');
         });
 
         # Upload

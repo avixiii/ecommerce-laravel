@@ -20,4 +20,14 @@ class Orders extends Model
       'total_price',
       'status_id',
     ];
+
+    public function status()
+    {
+        return $this->hasOne(Status::class, 'id', 'status_id');
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Paymentmethods::class, 'id', 'paymentmethod_id');
+    }
 }
