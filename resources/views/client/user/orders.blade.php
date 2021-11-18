@@ -21,8 +21,38 @@
     </div>
 @endsection
 @section('content')
-    <section class="profile container">
-        <h1 class="title"></h1>
-        <h2></h2>
+    <section class="profile container" style="margin-bottom: 20rem">
+        <h1 class="title">Danh sách đơn hàng</h1>
+        <table style="font-size: 1.6rem">
+            <thead style="padding-bottom: 5rem">
+            <tr>
+                <th>ID ĐẶT HÀNG</th>
+                <th width="200px">Ngày mua</th>
+                <th width="200px">Tổng tiền</th>
+                <th width="200px">Trạng thái đơn hàng</th>
+                <th>Huỷ đơn hàng</th>
+            </tr>
+            </thead>
+            <tbody style="transform: translateY(18px);">
+            @foreach($orders as $order)
+                <tr>
+                    <td>{{ $order->order_id }}</td>
+                    <th>{{ $order->date }}</th>
+                    <th>{{ number_format($order->price, 0, '.', '.')  }} <VNĐ></VNĐ></th>
+                    <th>{{ $order->status }}</th>
+                    <form method="post" id="{{ $order->order_id }}" action="{{ route('order.cancel') }}" hidden>
+                        <input name="order_id" hidden value="{{ $order->order_id }}">
+                        @csrf
+                    </form>
+                    <th><a onclick="document.getElementById('{{$order->order_id}}').submit(); return false;"
+                           style="font-size: 1.2rem; width: 105px;" href="" class="btn btn--rectangle">HUỶ ĐƠN HÀNG</a>
+                    </th>
+                </tr>
+            @endforeach
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
     </section>
 @endsection

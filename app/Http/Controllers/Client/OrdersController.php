@@ -191,4 +191,16 @@ class OrdersController extends Controller
         }
 
     }
+
+    public function cancel(Request $request)
+    {
+        try {
+            DB::table('orders')->where(['id' => $request->input('order_id')])->update(['status_id'=> 5]);
+            session()->flash('success', 'Đã huỷ thành công');
+        } catch (\Exception $err) {
+            session()->flash('error', 'Lỗi');
+        }
+
+        return back();
+    }
 }

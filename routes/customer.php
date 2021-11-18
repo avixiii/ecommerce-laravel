@@ -13,4 +13,6 @@ Route::middleware('auth:customer')->group(function() {
         Route::get('/',  [CustomersController::class, 'profile'])->name('profile');
         Route::post('/update', [CustomersController::class, 'update'])->name('profile.update');
     });
+    Route::get('orders', [CustomersController::class, 'orders'])->name('profile.orders');
+    Route::post('orders/cancel', [\App\Http\Controllers\Client\OrdersController::class, 'cancel'])->name('order.cancel');
 });

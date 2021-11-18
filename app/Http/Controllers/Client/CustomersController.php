@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Orders;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -76,7 +77,7 @@ class CustomersController extends Controller
 
     public function update(Request $request)
     {
-        $customer_id = Auth::guard('customer')->user()->id;
+        $customer_id = Auth::guard('customer')->id();
         try {
             $update = DB::query('update customers set full_name = ' . $request->input('full_name' . ', email = ' . $request->input('email') . ', phone = ' . $request->email . ', address = ' . $request->input('address') . 'where id = ' . $customer_id));
             session()->flash('success', 'update thông tin thành công');
@@ -85,4 +86,18 @@ class CustomersController extends Controller
         }
         return back();
     }
+
+    public function orders()
+    {
+        $customer_id = Auth::guard('customer')->id();
+        $orders = DB::select('select orders.id as order_id , orders.created_at as date, orders.total_price as price, status.name as status
+        from orders,
+             orderdetails,
+             status
+        where orders.status_id = status.id
+          and orders.customer_id = ' . $customer_id . ' group by orders.id, status.name ');
+
+        return view('client.user.orders', ['orders' => $orders]);
+    }
+
 }
