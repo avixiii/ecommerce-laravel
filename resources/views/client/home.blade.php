@@ -43,6 +43,7 @@
         </div>
 
     </section>
+{{--
     <section class="popular container">
         <div class="content">
             <h2 class="title">SẢN PHẨM PHỔ BIẾN</h2>
@@ -56,54 +57,20 @@
         <div class="popular__list">
             <div class="popular__item">
                 <img
-                    src="https://fakeimg.pl/270x380/"
+                    src=""
                     alt=""
                     class="popular__item-image"
                 />
                 <div class="popular__item-info">
-                    <h3 class="name">WOODEN CHAIR</h3>
-                    <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    <p class="price mt-8">100.000 VNĐ</p>
-                </div>
-            </div>
-            <div class="popular__item">
-                <img
-                    src="https://fakeimg.pl/270x380/"
-                    alt=""
-                    class="popular__item-image"
-                />
-                <div class="popular__item-info">
-                    <h3 class="name">WOODEN CHAIR</h3>
-                    <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    <p class="price mt-8">100.000 VNĐ</p>
-                </div>
-            </div>
-            <div class="popular__item">
-                <img
-                    src="https://fakeimg.pl/270x380/"
-                    alt=""
-                    class="popular__item-image"
-                />
-                <div class="popular__item-info">
-                    <h3 class="name">WOODEN CHAIR</h3>
-                    <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    <p class="price mt-8">100.000 VNĐ</p>
-                </div>
-            </div>
-            <div class="popular__item">
-                <img
-                    src="https://fakeimg.pl/270x380/"
-                    alt=""
-                    class="popular__item-image"
-                />
-                <div class="popular__item-info">
-                    <h3 class="name">WOODEN CHAIR</h3>
-                    <p class="desc mt-5">Lorem ipsum dolor sit amet</p>
-                    <p class="price mt-8">100.000 VNĐ</p>
+                    <h3 class="name"></h3>
+                    <p class="desc mt-5"></p>
+                    <p class="price mt-8"></p>
                 </div>
             </div>
         </div>
     </section>
+--}}
+
     <section class="news">
         <div class="container">
             <div class="content">
@@ -176,13 +143,15 @@
             </p>
         </div>
         <div class="block">
-            <form action="post" class="newsletter__form container">
+            <form action="/sendmail" method="post" class="newsletter__form container">
                 <input
+                    name="email"
                     type="email"
                     class="newsletter__form-input"
                     placeholder="Vui lòng nhập địa chỉ email của bạn"
                 />
-                <a href="#" class="newsletter__form-btn">SEND ME</a>
+                <a onclick="this.parentNode.submit(); return false;" href="" class="newsletter__form-btn">SEND ME</a>
+                @csrf
             </form>
         </div>
     </section>

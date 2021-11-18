@@ -61,6 +61,10 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 4,
                 'name' => 'Đã nhận'
+            ],
+            [
+                'id' => 5,
+                'name' => 'Đã huỷ'
             ]
         ]);
     }

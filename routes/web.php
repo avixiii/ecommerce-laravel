@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Client\CommentsController;
 use App\Http\Controllers\Client\CustomersController;
+use App\Http\Controllers\Client\SendMailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -120,3 +121,8 @@ Route::prefix('checkout')->group(function () {
 
 Route::post('comments/store', [CommentsController::class, 'store'])->name('comments.store');
 Route::get('comments/destroy', [CommentsController::class, 'destroy'] )->name('comments.destroy');
+
+
+// sendmail
+
+Route::post('sendmail', [SendMailController::class, 'store']);
