@@ -253,3 +253,4 @@ $(function () {
 
     $('.register').on('click', register)
 })
+

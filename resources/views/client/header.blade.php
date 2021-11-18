@@ -33,8 +33,17 @@
                         <div class="quantity">4</div>
                     </div>
                     <div class="search">
-                        <ion-icon name="search-outline" role="img" class="md hydrated"
-                                  aria-label="search outline"></ion-icon>
+                        <div class="search">
+                            <ion-icon name="search-outline" role="img" class="md hydrated"
+                                      aria-label="search outline"></ion-icon>
+                        </div>
+                        <form  class="form-search" action="{{ route('search') }}" method="post">
+                            <div style="display: flex" class="from-group">
+                                <input name="value" type="text" class="input-rectangle" placeholder="Nhập vào sản phẩm">
+                                <a onclick='this.parentNode.parentNode.submit(); return false;' style="width: 100px; font-size: 1.2rem" href="" class="btn btn--rectangle">TÌM KIẾM</a>
+                            </div>
+                            @csrf
+                        </form>
                     </div>
                 </li>
             </ul>

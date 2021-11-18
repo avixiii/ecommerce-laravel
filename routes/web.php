@@ -122,6 +122,8 @@ Route::prefix('checkout')->group(function () {
 Route::post('comments/store', [CommentsController::class, 'store'])->name('comments.store');
 Route::get('comments/destroy', [CommentsController::class, 'destroy'] )->name('comments.destroy');
 
+// Search
+Route::post('search', [HomeController::class, 'search'])->name('search');
 
 // sendmail
 

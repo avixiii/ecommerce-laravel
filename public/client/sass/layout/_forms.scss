@@ -132,3 +132,12 @@
     display: inline-block;
     font-size: 1.4rem;
 }
+
+.form-search {
+    position: absolute;
+    margin-top: 34px;
+    z-index: 2;
+    transform: translateY(-35px);
+    display: none;
+}
+

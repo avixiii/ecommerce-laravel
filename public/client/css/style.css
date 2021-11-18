@@ -368,6 +368,14 @@ input[type=number] {
   font-size: 1.4rem;
 }
 
+.form-search {
+  position: absolute;
+  margin-top: 34px;
+  z-index: 2;
+  transform: translateY(-35px);
+  display: none;
+}
+
 .btn {
   display: block;
   width: 21rem;
@@ -389,6 +397,10 @@ input[type=number] {
 .group-button {
   display: flex;
   gap: 0 12px;
+}
+
+.search:hover .form-search {
+  display: block;
 }
 
 .slider {
