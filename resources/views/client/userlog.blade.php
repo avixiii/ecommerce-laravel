@@ -15,7 +15,7 @@
         <ul class="user__list-item">
 
             <li class="item"><a href="">Đơn hàng của tôi</a></li>
-            <li class="item"><a href="">Tài khoản của tôi</a></li>
+            <li class="item"><a href="{{ route('profile') }}">Tài khoản của tôi</a></li>
             <li class="item"><a href="">Nhận xét sản phẩm đã mua</a></li>
         </ul>
     </div>

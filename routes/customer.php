@@ -9,5 +9,8 @@ Route::post('login', [CustomersController::class, 'login'])->name('loginCustomer
 Route::post('register', [CustomersController::class, 'register'])->name('registerCustomer');
 Route::get('logout', [CustomersController::class, 'logout']);
 Route::middleware('auth:customer')->group(function() {
-    Route::get('profile', [CustomersController::class, 'profile'])->name('profile');
+    Route::prefix('profile')->group(function () {
+        Route::get('/',  [CustomersController::class, 'profile'])->name('profile');
+        Route::post('/update', [CustomersController::class, 'update'])->name('profile.update');
+    });
 });

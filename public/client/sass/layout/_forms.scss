@@ -120,3 +120,15 @@
         }
     }
 }
+
+.from-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0px;
+}
+
+.label {
+    width: 100px;
+    display: inline-block;
+    font-size: 1.4rem;
+}

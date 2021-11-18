@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class CustomersController extends Controller
@@ -71,5 +72,17 @@ class CustomersController extends Controller
     public function profile()
     {
         return view('client.user.index');
+    }
+
+    public function update(Request $request)
+    {
+        $customer_id = Auth::guard('customer')->user()->id;
+        try {
+            $update = DB::query('update customers set full_name = ' . $request->input('full_name' . ', email = ' . $request->input('email') . ', phone = ' . $request->email . ', address = ' . $request->input('address') . 'where id = ' . $customer_id));
+            session()->flash('success', 'update thông tin thành công');
+        } catch (\Exception $err) {
+            session()->flash('error', 'Sảy ra lỗi, không thể update ngay bây giờ');
+        }
+        return back();
     }
 }
