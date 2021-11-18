@@ -25,12 +25,14 @@ class ProductsController extends Controller
             $data = Products::orderBy('name', 'DESC')->paginate(12);
         }
 
+
         return view('client.product.index', ['title' => $title, 'products' => $data]);
     }
 
     public function show($slug = '')
     {
         $product = Products::where('slug', $slug)->where('status', 1)->first();
-        return view('client.product.details', ['product' => $product, 'comments' => $product->comments]);
+        $popular = Products::all()->random(4);
+        return view('client.product.details', ['product' => $product, 'comments' => $product->comments, 'popular' => $popular]);
     }
 }

@@ -53,8 +53,8 @@
                     <div class="left">
                         <h3 class="product-details__info-title">{{ $product->name }}</h3>
                         @if($product->price_sale)
-                        <p class="product-details__info-price">{{number_format($product->price_sale, 0, '.', '.')}}
-                            VNĐ</p>
+                            <p class="product-details__info-price">{{number_format($product->price_sale, 0, '.', '.')}}
+                                VNĐ</p>
                         @else
                             <p class="product-details__info-price">{{number_format($product->price, 0, '.', '.')}}
                                 VNĐ</p>
@@ -91,7 +91,7 @@
                         />
 
                         <a data-url="{{ route('addToCart', ['id' => $product->id, 'quantity' => ""]) }}"
-                           href=""  class="btn btn--rectangle mt-8 add_to_cart">THÊM VÀO GIỎ HÀNG</a>
+                           href="" class="btn btn--rectangle mt-8 add_to_cart">THÊM VÀO GIỎ HÀNG</a>
                     </form>
                 </div>
             </div>
@@ -127,103 +127,44 @@
     <section class="popular container">
         <h2 class="title">CÓ THỂ BẠN CŨNG THÍCH</h2>
         <div class="product__list">
-            <div class="product__item">
-                <div class="product__item-top product__front">
-                    <img
-                        src="https://fakeimg.pl/270x500"
-                        alt=""
-                        class="product__item-image"
-                    />
-                    <div class="sale">10<sup>%</sup></div>
-                </div>
-                <div class="product__item-info product__back">
-                    <div class="product__item-feat">
-                        <a href="#">
-                            <ion-icon name="heart-outline"></ion-icon>
-                        </a>
-                        <a href="" class="">
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </a>
+            @foreach($popular as $product)
+                <div class="product__item">
+                    <div class="product__item-top product__front">
+                        <img
+                            src="{{ $product->image_list }}"
+                            alt=""
+                            class="product__item-image"
+                        />
+                        @if($product->price_sale)
+                            <div class="sale">{{ (($product->price - $product->price_sale) / ($product->price)) * 100 }}
+                                <sup>%</sup></div>
+                        @endif
+                    </div>
+                    <div class="product__item-info product__back">
+                        <div class="product__item-feat">
+                            <a href="#">
+                                <ion-icon name="heart-outline"></ion-icon>
+                            </a>
+                            <a href="" class="">
+                                <ion-icon name="cart-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product__item-bottom">
+                        <div class="name mt-8">{{ $product->name }}</div>
+                        <div
+                            class="desc mt-8">{{ \Illuminate\Support\Str::limit($product->description, 25, '...') }}</div>
+                        @if($product->price_sale != 0)
+                            <div
+                                class="price price-sale mt-8">{{number_format($product->price_sale, 0, '.', '.')}}</div>
+                            <div style="font-size: 14px; font-weight: 300 " class="price mt-8">
+                                <strike> {{number_format($product->price, 0, '.', '.')}} VNĐ</strike></div>
+                        @else
+                            <div class="price mt-8">{{number_format($product->price, 0, '.', '.')}} VNĐ</div>
+                        @endif
                     </div>
                 </div>
-                <div class="product__item-bottom">
-                    <div class="name mt-8">STONE CUP</div>
-                    <div class="desc mt-8">lorem ipsum dolor sit</div>
-                    <div class="price mt-8">100.000 VNĐ</div>
-                </div>
-            </div>
-            <div class="product__item">
-                <div class="product__item-top product__front">
-                    <img
-                        src="https://fakeimg.pl/270x500"
-                        alt=""
-                        class="product__item-image"
-                    />
-                </div>
-                <div class="product__item-info product__back">
-                    <div class="product__item-feat">
-                        <a href="#">
-                            <ion-icon name="heart-outline"></ion-icon>
-                        </a>
-                        <a href="" class="">
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </a>
-                    </div>
-                </div>
-                <div class="product__item-bottom">
-                    <div class="name mt-8">STONE CUP</div>
-                    <div class="desc mt-8">lorem ipsum dolor sit</div>
-                    <div class="price mt-8">100.000 VNĐ</div>
-                </div>
-            </div>
-            <div class="product__item">
-                <div class="product__item-top product__front">
-                    <img
-                        src="https://fakeimg.pl/270x500"
-                        alt=""
-                        class="product__item-image"
-                    />
-                </div>
-                <div class="product__item-info product__back">
-                    <div class="product__item-feat">
-                        <a href="#">
-                            <ion-icon name="heart-outline"></ion-icon>
-                        </a>
-                        <a href="" class="">
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </a>
-                    </div>
-                </div>
-                <div class="product__item-bottom">
-                    <div class="name mt-8">STONE CUP</div>
-                    <div class="desc mt-8">lorem ipsum dolor sit</div>
-                    <div class="price mt-8">100.000 VNĐ</div>
-                </div>
-            </div>
-            <div class="product__item">
-                <div class="product__item-top product__front">
-                    <img
-                        src="https://fakeimg.pl/270x500"
-                        alt=""
-                        class="product__item-image"
-                    />
-                </div>
-                <div class="product__item-info product__back">
-                    <div class="product__item-feat">
-                        <a href="#">
-                            <ion-icon name="heart-outline"></ion-icon>
-                        </a>
-                        <a href="" class="">
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </a>
-                    </div>
-                </div>
-                <div class="product__item-bottom">
-                    <div class="name mt-8">STONE CUP</div>
-                    <div class="desc mt-8">lorem ipsum dolor sit</div>
-                    <div class="price mt-8">100.000 VNĐ</div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <section class="about">
